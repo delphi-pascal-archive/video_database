@@ -1,0 +1,24 @@
+unit UVueFilm_Frm;
+{l'idee est d'associer par composition un data module propre à chaque fiche.
+Ainsi, chaque vue de film sera distincte, même sur le même film (chargé à deux moments différents).
+il s'agit de créer dynamiquement un datamodule que gèrera la fiche du film.
+Ce mécanisme permettra dans le cas de fiches complexes de comparer la nouvelle saisie avec les données initiales, et choisir de valider ou non (moi je n'ai rien implémenté, mais on peut 'jouer' à partir de la liste en édition)
+}
+
+unit UListeFilms_Frm;
+{
+A la conception, le dataset de la grille est le datamodule DMUVueListeFilms du module UListeFilms_DM. 
+Ce datamodule sera le même pour chaque nouvelle instance de fiche TFrmListeFilms. 
+Une modif sur l'une impliquera la modif sur les autres instances.
+Elles "observent" la même instance du datamodule
+Pour que avoir un nom de datamodule (DMListeFilms) à l'execution,
+je l'ai ajouté dans la liste des fiches à lancer au chargement,
+mais on pourrait tres bien le déclarer dans la fiche principale et l'instancier ensuite. 
+}
+
+unit UMain_Frm;
+{Afficher la liste des films
+dans une nouvelle fenetre anonyme
+permet d'ouvrir une nouvelle fenetre à chaque film
+et pose le probleme de la similarité des données
+affichées sur l'ensemble des fenetres "listes" }
